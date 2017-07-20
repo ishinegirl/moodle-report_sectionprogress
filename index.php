@@ -26,7 +26,7 @@
 require('../../config.php');
 require_once($CFG->libdir . '/completionlib.php');
 
-define('COMPLETION_REPORT_PAGE', 25);
+define('COMPLETION_REPORT_PAGE', 40);
 
 // Get course
 $id = required_param('course',PARAM_INT);
@@ -119,10 +119,10 @@ $silast='all';
 
 // Get enrolled user count
 $totalusers =0;
-$users = get_enrolled_users($context);
-if($users){
-    $totalusers = count($users);
-}
+//get_enrolled_users(context $context, $withcapability = '', $groupid = 0, $userfields = 'u.*', $orderby = '', $limitfrom = 0, $limitnum = 0)
+$users = get_enrolled_users($context, '', 0, 'u.*','', $start, COMPLETION_REPORT_PAGE);
+$totalusers = count_enrolled_users($context);
+
 
 
 if ($csv && $totalusers && count($sectionnames)>0) { // Only show CSV if there are some users/actvs
@@ -183,6 +183,10 @@ $initials = array('first', 'last');
 $alphabet = explode(',', get_string('alphabet', 'langconfig'));
 
 $pagingbar = '';
+
+//we don't use by name ...for now... we would need to use something in addition to "get_enrolled_users"
+//JUSTIN 20170720
+/*
 foreach ($initials as $initial) {
     $var = 'si'.$initial;
 
@@ -210,7 +214,7 @@ foreach ($initials as $initial) {
 
     $pagingbar .= '</div>';
 }
-
+*/
 // Do we need a paging bar?
 if ($totalusers > COMPLETION_REPORT_PAGE) {
 
