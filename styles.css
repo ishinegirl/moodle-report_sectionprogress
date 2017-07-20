@@ -1,0 +1,34 @@
+#page-report-sectionprogress-index #completion-sectionprogress th,
+#page-report-sectionprogress-index #completion-sectionprogress td {
+    padding: 2px 4px;
+    font-weight: normal;
+    border-right: 1px solid #eee;
+}
+
+#page-report-sectionprogress-index .sectionprogress-actions {
+    text-align: center;
+    list-style: none;
+}
+
+#page-report-sectionprogress-index .completion_pagingbar {
+    margin: 1em 0;
+    text-align: center;
+}
+
+#page-report-sectionprogress-index .completion_prev {
+    display: inline;
+    margin-right: 2em;
+}
+
+#page-report-sectionprogress-index .completion_pagingbar p {
+    display: inline;
+}
+
+#page-report-sectionprogress-index .completion_next {
+    display: inline;
+    margin-left: 2em;
+}
+/*rtl:ignore*/
+#page-report-sectionprogress-index #completion-sectionprogress th svg {
+    direction: ltr;
+}
